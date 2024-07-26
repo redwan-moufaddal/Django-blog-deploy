@@ -1,0 +1,72 @@
+{% extends "parts/base.html" %}
+{% load static %}
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- breadcrumb -->
+                    <!-- Breadcrumb -->
+                    <ul class="breadcrumbs bg-light mb-4">
+                        <li class="breadcrumbs__item">
+                            <a class='breadcrumbs__url' href='{% url "base:home" %}'>
+                                <i class="fa fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumbs__item">
+                            <a class='breadcrumbs__url' href='{% url "base:about" %}'>About</a>
+                        </li>
+
+                    </ul>
+                    <!-- End breadcrumb -->
+
+                    <div class="wrap__about-us">
+                        <h2>About Us</h2>
+                        <h4>Welcome</h4>
+                        <p>
+ to the news section of our website! Dive into a treasure trove of updates, insights, and stories that illuminate the heartbeat of our community. Our news feed is your gateway to a world of discovery, offering a glimpse into the dynamic landscape of our endeavors.
+
+We're thrilled to introduce a groundbreaking feature: AI-powered news summarization. Leveraging cutting-edge artificial intelligence technology, we've revolutionized the way you consume news. Our advanced algorithms analyze and distill vast amounts of information, delivering concise and informative summaries that capture the essence of each story. Stay informed with precision and efficiency like never before.
+
+Behind the scenes, our dedicated team led by Redwan Moufaddal from Morocco, a seasoned 16-year-old backend Django developer, works tirelessly to ensure a seamless and enriching user experience. With passion, expertise, and a commitment to excellence, Redwan and the team are dedicated to pushing the boundaries of innovation and driving our platform forward.
+
+
+
+
+                        </p>
+
+                        <figure class="float-left mr-3">
+                            <img src="{% static 'images/official.jpg' %}" alt="" class="img-fluid">
+                        </figure>
+                        <p>
+                            From product launches and company milestones to industry trends and thought leadership, we curate a diverse array of content to keep you informed and engaged. Delve into behind-the-scenes stories that unveil the passion, dedication, and creativity driving our mission forward.
+
+At the core of our news section lies a commitment to transparency, authenticity, and relevance. We strive to provide you with timely updates that empower you to stay connected and informed. Whether you're a loyal supporter, a curious observer, or a prospective collaborator, our news section invites you to join us on our quest for progress and excellence.
+
+                        </p>
+
+
+
+
+                        <p>
+
+                            Our website serves as a dynamic platform for showcasing the latest news and developments across various domains. With a user-friendly interface and intuitive navigation, accessing the latest updates has never been easier. Our news section is meticulously curated to cover a wide range of topics, including technology, business, lifestyle, entertainment, health, and more. From breaking news to in-depth analysis, we strive to provide a comprehensive overview of the ever-evolving world around us.
+
+Stay informed with real-time updates on significant events, emerging trends, and groundbreaking innovations. Our dedicated team of editors ensures that you receive accurate, relevant, and timely information, empowering you to make informed decisions and stay ahead of the curve. Whether you're a tech enthusiast, a business professional, a lifestyle connoisseur, or simply curious about the world, our news section caters to diverse interests and preferences.
+
+Explore feature articles, opinion pieces, interviews, and expert insights that offer unique perspectives on current affairs and industry developments. Engage with thought-provoking content that sparks conversation and fosters intellectual curiosity. With a commitment to journalistic integrity and editorial excellence, we aim to provide a trusted source of news and information for our audience.
+
+Join us as we embark on a journey of discovery, enlightenment, and empowerment through the power of news. Explore the world through our lens and uncover the stories that shape our society, inspire our imaginations, and drive positive change. Welcome to a world of endless possibilities, where knowledge is your greatest asset.
+
+                        </p>
+                        
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

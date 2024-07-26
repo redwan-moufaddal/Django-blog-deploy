@@ -1,0 +1,135 @@
+{% extends "parts/base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- login -->
+    
+    <section class="wrap__section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Login -->
+                    <div class="card mx-auto" style="max-width: 380px;">
+                        <div class="card-body">
+
+                            <h4 class="card-title mb-4">Sign in</h4>
+                                {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message-box" style="background-color: {% if message.tags == 'error' %}#f8d7da;{% elif message.tags == 'success' %}#d4edda;{% endif %};
+                                             border: 1px solid {% if message.tags == 'error' %}#f5c6cb;{% elif message.tags == 'success' %}#c3e6cb;{% endif %};
+                                             color: {% if message.tags == 'error' %}#721c24;{% elif message.tags == 'success' %}#155724;{% endif %};
+                                             padding: 10px 15px;
+                                             margin-bottom: 20px;
+                                             border-radius: 4px;">
+                {{ message }}{% if count %}<span id="count"></span> seconds.{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+<script>
+    var messagesElement = document.querySelector('.messages');
+    var countElement = document.getElementById('count');
+    var count = 15;
+
+    // Function to update the countdown
+    function updateCountdown() {
+        countElement.textContent = count;
+        count--;
+
+        // Hide the messages after 15 seconds
+        if (count >= 0) {
+            setTimeout(updateCountdown, 1000);
+        } else {
+            messagesElement.style.display = 'none'; // Hide messages after countdown
+        }
+    }
+
+    // Call the function initially
+    updateCountdown();
+</script>
+{% endif %}
+                            <form method="POST">
+                                {% csrf_token %}
+                                
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Email" type="text" name="email"
+                                           {% if email %}
+                                               value="{{ email }}"
+                                           {% endif %}
+                                           {% if all %}
+                                               style="border-color: red;"
+                                           {% endif %} id="input1">
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" type="password" name="password"
+                                           {% if email or all %}
+                                               style="border-color: red;"
+                                           {% endif %} id="input2">
+                                </div> <!-- form-group// -->
+
+                                <div class="form-group">
+                                    <a href="{% url 'password_reset' %}" class="float-right">Forgot password?</a>
+                                    <label class="float-left custom-control custom-checkbox"> <input type="checkbox"
+                                            class="custom-control-input" checked="">
+                                        <span class="custom-control-label"> Remember </span>
+                                    </label>
+                                </div> <!-- form-group form-check .// -->
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block" id="loginButton"> Login </button>
+                                </div> <!-- form-group// -->
+                            </form>
+                        </div> <!-- card-body.// -->
+                    </div> <!-- card .// -->
+
+                    <p class="text-center mt-4 mb-0">Don't have account? <a href="{% url 'base:register' %}">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end login -->
+<script>
+var messagesElement = document.querySelector('.messages');
+
+// Function to display the message for 15 seconds
+function displayMessage(message) {
+  messagesElement.textContent = message;
+  
+  // Hide the message after 15 seconds
+  setTimeout(function() {
+    messagesElement.textContent = '';
+  }, 15000);
+}
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailInput = document.querySelector('#input1');
+        const passwordInput = document.querySelector('#input2');
+        const loginButton = document.querySelector('#loginButton');
+
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function validateInputs() {
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            if (email && password && validateEmail(email)) {
+                loginButton.disabled = false;
+            } else {
+                loginButton.disabled = true;
+            }
+        }
+
+        emailInput.addEventListener('input', validateInputs);
+        passwordInput.addEventListener('input', validateInputs);
+
+        validateInputs();
+    });
+
+
+  </script>
+{% endblock content %}

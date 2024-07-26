@@ -1,0 +1,139 @@
+{% load static %}	
+	<section class="wrapper__section p-0">
+		<div class="wrapper__section__components">
+			<!-- Footer -->
+			<footer>
+				<div class="wrapper__footer bg__footer-dark pb-0">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="widget__footer">
+									<div class="dropdown-footer ">
+										<h4 class="footer-title">
+											News
+											<span class="fa fa-angle-down"></span>
+										</h4>
+
+									</div>
+
+									<ul class="list-unstyled option-content is-hidden">
+										{% for article in four_last_article %}
+										<li>
+											<a href="{% url 'base:article_detail' article.title article.aid %}">{{ article.title|truncatechars:24 }}</a>
+
+										</li>
+										
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="widget__footer">
+									<div class="dropdown-footer">
+										<h4 class="footer-title">
+											National News
+											<span class="fa fa-angle-down"></span>
+										</h4>
+
+									</div>
+
+									<ul class="list-unstyled option-content is-hidden">
+										{% for article in four_last_article1 %}
+										<li>
+											<a href="{% url 'base:article_detail' article.title article.aid %}">{{ article.title|truncatechars:24 }}</a>
+
+										</li>
+										
+										{% endfor %}
+										
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="widget__footer">
+									<div class="dropdown-footer">
+										<h4 class="footer-title">
+											Sports
+											<span class="fa fa-angle-down"></span>
+										</h4>
+
+									</div>
+									<ul class="list-unstyled option-content is-hidden">
+										{% for article in four_last_article %}
+										<li>
+											<a href="{% url 'base:article_detail' article.title article.aid %}">{{ article.title|truncatechars:24 }}</a>
+
+										</li>
+										
+										{% endfor %}
+										
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="widget__footer">
+									<div class="dropdown-footer">
+										<h4 class="footer-title">
+											Local News
+											<span class="fa fa-angle-down"></span>
+										</h4>
+
+									</div>
+
+									<ul class="list-unstyled option-content is-hidden">
+										{% for article in four_last_article2 %}
+										<li>
+											<a href="{% url 'base:article_detail' article.title article.aid %}">{{ article.title|truncatechars:24 }}</a>
+
+										</li>
+										
+										{% endfor %}
+										
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Footer bottom -->
+				<div class="wrapper__footer-bottom bg__footer-dark">
+					<div class="container ">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="border-top-1 bg__footer-bottom-section">
+									
+									<ul class="list-inline" >
+										<li class="list-inline-item">
+											<span>
+												Copyright © 2024 . All rights reserved. Programmed with ♥ by Redwan Moufaddal
+
+											</span>
+										</li>
+									</ul>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</footer>
+		</div>
+	</section>
+<style>
+    .list-inline {
+        text-align: center;
+    }
+    
+    .list-inline-item {
+        display: inline-block;
+        margin: 0 10px; /* Adjust the margin as needed */
+    }
+</style>
+</html>
+<!--Your Order Number is: 9760076357-->

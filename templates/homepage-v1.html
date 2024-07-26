@@ -1,0 +1,699 @@
+{% extends "parts/base.html" %}
+{% load static %}
+{% block content %}
+	<!-- Popular news -->
+	<section>
+		<!-- Popular news  header-->
+		<div class="popular__news-header">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-md-8 ">
+						<div class="card__post-carousel">
+							{% for article in five_articles %}
+							<div class="item">
+								<!-- Post Article -->
+								<div class="card__post">
+									<div class="card__post__body">
+										<a href='{% url "base:article_detail" article.title article.aid %}'>
+											<img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}">
+										</a>
+										<div class="card__post__content bg__post-cover">
+											<div class="card__post__category">
+												{{article.category}}
+											</div>
+											<div class="card__post__title">
+												<h2>
+													<a href="{% url 'base:article_detail' article.title article.aid %}">
+														{{article.title}}
+													</a>
+												</h2>
+											</div>
+											<div class="card__post__author-info">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														<span>
+															{{ article.date}}
+														</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="popular__news-right">
+							<!-- Post Article -->
+							{% for article in two_articles %}
+							<div class="card__post ">
+								<div class="card__post__body card__post__transition">
+									<a href="{% url 'base:article_detail' article.title article.aid %}">
+										<img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}">
+									</a>
+									<div class="card__post__content bg__post-cover">
+										<div class="card__post__category">
+											{{article.category}}
+										</div>
+										<div class="card__post__title">
+											<h5>
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													{{article.title}}</a>
+											</h5>
+										</div>
+										<div class="card__post__author-info">
+											<ul class="list-inline">
+												<li class="list-inline-item">
+													<span>
+														{{ article.date}}
+													</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Popular news header-->
+		<!-- Popular news carousel -->
+		<div class="popular__news-header-carousel">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="top__news__slider">
+							{% for article in sixteen_articles %}
+							<div class="item">
+								<!-- Post Article -->
+								<div class="article__entry">
+									<div class="article__image">
+										<a href="{% url 'base:article_detail' article.title article.aid %}">
+											<img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+										</a>
+									</div>
+									<div class="article__content">
+										<ul class="list-inline">
+											
+
+											<li class="list-inline-item">
+												<span>
+													{{ article.date}}
+												</span>
+											</li>
+										</ul>
+										<h5>
+											<a href="{% url 'base:article_detail' article.title article.aid %}">
+												{{article.title}}
+											</a>
+										</h5>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Popular news carousel -->
+	</section>
+	<!-- End Popular news -->
+
+	<!-- Popular news category -->
+	<section class="pt-0">
+		<div class="popular__section-news">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-8">
+						<div class="wrapper__list__article">
+							<h4 class="border_section">recent post</h4>
+						</div>
+						<div class="row ">
+							{% for article in two_articles %}
+							<div class="col-sm-12 col-md-6 mb-4">
+								
+								<!-- Post Article -->
+								<div class="card__post ">
+									<div class="card__post__body card__post__transition">
+										<a href="{% url 'base:article_detail' article.title article.aid %}">
+											<img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}
+">
+										</a>
+										<div class="card__post__content bg__post-cover">
+											<div class="card__post__category">
+												{{article.category}}
+											</div>
+											<div class="card__post__title">
+												<h5>
+													<a href="{% url 'base:article_detail' article.title article.aid %}">
+														{{article.title}}
+													</a>
+												</h5>
+											</div>
+											<div class="card__post__author-info">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														<span>
+															{{article.date}}
+														</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							{% endfor %}
+						</div>
+						<div class="row ">
+							<div class="col-sm-12 col-md-6">
+								<div class="wrapp__list__article-responsive">
+									{% for article in two_last_article %}
+									<div class="mb-3">
+										<!-- Post Article -->
+										<div class="card__post card__post-list">
+											<div class="image-sm">
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													<img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}">
+												</a>
+											</div>
+
+
+											<div class="card__post__body ">
+												<div class="card__post__content">
+
+													
+													<div class="card__post__title">
+														<h6>
+															<a href="{% url 'base:article_detail' article.title article.aid %}">
+																{{article.title}}
+															</a>
+														</h6>
+														<!-- <p class="d-none d-lg-block d-xl-block">
+									}
+                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                    sollicitudin ut est. In fringilla dui dui.
+                </p> -->
+
+													</div>
+													<div class="card__post__author-info mb-2">
+														<ul class="list-inline">
+															<li class="list-inline-item">
+																<span class="text-dark text-capitalize">
+																	{{article.date}}
+																</span>
+															</li>
+
+														</ul>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 ">
+								<div class="wrapp__list__article-responsive">
+									{% for article in two_last_article1 %}
+									<div class="mb-3">
+										<!-- Post Article -->
+										<div class="card__post card__post-list">
+											<div class="image-sm">
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													<img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}">
+												</a>
+											</div>
+
+
+											<div class="card__post__body ">
+												<div class="card__post__content">
+
+													
+													<div class="card__post__title">
+														<h6>
+															<a href="{% url 'base:article_detail' article.title article.aid %}">
+																{{article.title}}
+															</a>
+														</h6>
+														<!-- <p class="d-none d-lg-block d-xl-block">
+									}
+                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                    sollicitudin ut est. In fringilla dui dui.
+                </p> -->
+
+													</div>
+													<div class="card__post__author-info mb-2">
+														<ul class="list-inline">
+															
+															<li class="list-inline-item">
+																<span class="text-dark text-capitalize">
+																	{{article.date}}
+																</span>
+															</li>
+
+														</ul>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-12 col-lg-4">
+    <aside class="wrapper__list__article">
+        <h4 class="border_section">Popular Posts</h4>
+        <div class="wrapper__list-number">
+            {% for article in top_articles %}
+            <!-- List Article -->
+            <div class="card__post__list">
+                <div class="list-number">
+                    <span>{{ forloop.counter }}</span>
+                </div>
+                <a href="{% url 'base:article_detail' article.title article.aid %}" class="category">{{ article.category }}</a>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <h5><a href="{% url 'base:article_detail' article.title article.aid %}">{{ article.title }}</a></h5>
+                    </li>
+                </ul>
+            </div>
+            <!-- End List Article -->
+            {% endfor %}
+        </div>
+    </aside>
+</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Post news carousel -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<aside class="wrapper__list__article">
+						<h4 class="border_section">Local News</h4>
+					</aside>
+				</div>
+				<div class="col-md-12">
+
+					<div class="article__entry-carousel">
+						{% for article in local_news %}
+						<div class="item">
+							<!-- Post Article -->
+							<div class="article__entry">
+								<div class="article__image">
+									<a href="{% url 'base:article_detail' article.title article.aid %}">
+										<img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+									</a>
+								</div>
+								<div class="article__content">
+									<ul class="list-inline">
+										
+										<li class="list-inline-item">
+											<span>
+												{{article.date}}
+											</span>
+										</li>
+
+									</ul>
+									<h5>
+										<a href="{% url 'base:article_detail' article.title article.aid %}">
+											{{article.title}}
+										</a>
+									</h5>
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Popular news category -->
+		<!-- Post news carousel -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<aside class="wrapper__list__article">
+						<h4 class="border_section">sports</h4>
+					</aside>
+				</div>
+				<div class="col-md-12">
+
+					<div class="article__entry-carousel">
+						{% for article in sport_articles %}
+						<div class="item">
+							<!-- Post Article -->
+							<div class="article__entry">
+								<div class="article__image">
+									<a href="{% url 'base:article_detail' article.title article.aid %}">
+										<img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+									</a>
+								</div>
+								<div class="article__content">
+									<ul class="list-inline">
+										
+										<li class="list-inline-item">
+											<span>
+												{{article.date}}
+											</span>
+										</li>
+
+									</ul>
+									<h5>
+										<a href="{% url 'base:article_detail' article.title article.aid %}">
+											{{article.title}}
+										</a>
+									</h5>
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Popular news category -->
+
+
+		<!-- Popular news category -->
+		<div class="mt-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<aside class="wrapper__list__article mb-0">
+							<h4 class="border_section">National News</h4>
+							<div class="row">
+								<div class="col-md-6">
+									{% for article in national_news %}
+									<div class="mb-4">
+										<!-- Post Article -->
+										<div class="article__entry">
+											<div class="article__image">
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													<img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+												</a>
+											</div>
+											<div class="article__content">
+													<li class="list-inline-item">
+														<span>
+															{{article.date}}
+														</span>
+													</li>
+
+												</ul>
+												<h5 style="font-size: 1.1rem;">
+													<a href="{% url 'base:article_detail' article.title article.aid %}">
+														{{article.title}}
+													</a>
+												</h5>
+
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+								<div class="col-md-6">
+
+									{% for article in national_news1 %}
+									<div class="mb-4">
+										<!-- Post Article -->
+										<div class="article__entry">
+											<div class="article__image">
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													<img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+												</a>
+											</div>
+											<div class="article__content">
+													<li class="list-inline-item">
+														<span>
+															{{article.date}}
+														</span>
+													</li>
+
+												</ul>
+												<h5 style="font-size: 1.1rem;">
+													<a href="{% url 'base:article_detail' article.title article.aid %}">
+														{{article.title}}
+													</a>
+												</h5>
+
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									
+								</div>
+							</div>
+						</aside>
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">News</h4>
+
+							<div class="wrapp__list__article-responsive">
+								{% for article in four_last_article %}
+								<!-- Post Article List -->
+								<div class="card__post card__post-list card__post__transition mt-30">
+									<div class="row ">
+										<div class="col-md-5">
+											<div class="card__post__transition">
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													<img src="{{article.image_url_video_url}}" class="img-fluid w-100" alt="{{article.title}}">
+												</a>
+											</div>
+										</div>
+										<div class="col-md-7 my-auto pl-0">
+											<div class="card__post__body ">
+												<div class="card__post__content  ">
+													<div class="card__post__category ">
+														{{article.category}}
+													</div>
+													<span class="text-dark text-capitalize">
+																	{{article.date}}
+													</span>
+													
+													<div class="card__post__title">
+														<h5>
+															<a href="{% url 'base:article_detail' article.title article.aid %}">
+																{{article.title}}
+															</a>
+														</h5>
+														<p class="d-none d-lg-block d-xl-block mb-0">
+															{{ article.sub_description|slice:":132" }}...
+
+														</p>
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</aside>
+					</div>
+
+					<div class="col-md-4">
+						<div class="sidebar-sticky">
+							<aside class="wrapper__list__article">
+								<h4 class="border_section">
+									Latest post</h4>
+								<div class="wrapper__list__article-small">
+
+									<!-- Post Article -->
+									{% for article in one_article %}
+									<div class="article__entry">
+										<div class="article__image">
+											<a href="{% url 'base:article_detail' article.title article.aid %}">
+												<img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+											</a>
+										</div>
+										<div class="article__content">
+											<div class="article__category">
+												{{article.category}}
+											</div>
+											<ul class="list-inline">
+
+												<li class="list-inline-item">
+													<span class="text-dark text-capitalize">
+														{{article.date}}
+													</span>
+												</li>
+
+											</ul>
+											<h5>
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													{{article.title}}
+												</a>
+											</h5>
+											<p>
+												{{ article.sub_description|slice:":132" }}...
+											</p>
+											<a href="{% url 'base:article_detail' article.title article.aid %}" class="btn btn-outline-primary mb-4 text-capitalize"> read
+												more</a>
+										</div>
+									</div>
+									{% endfor %}
+									{% for article in two_articles %}
+									<div class="mb-3">
+										<!-- Post Article -->
+										<div class="card__post card__post-list">
+											<div class="image-sm">
+												<a href="{% url 'base:article_detail' article.title article.aid %}">
+													<img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}">
+												</a>
+											</div>
+
+
+											<div class="card__post__body ">
+												<div class="card__post__content">
+
+													<div class="card__post__author-info mb-2">
+														<ul class="list-inline">
+
+															<li class="list-inline-item">
+																<span class="text-dark text-capitalize">
+																	{{article.date}}
+																</span>
+															</li>
+
+														</ul>
+													</div>
+													<div class="card__post__title">
+														<h6>
+															<a href="{% url 'base:article_detail' article.title article.aid %}">
+																{{article.title}}
+															</a>
+														</h6>
+														<!-- <p class="d-none d-lg-block d-xl-block">
+                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                    sollicitudin ut est. In fringilla dui dui.
+                </p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</aside>
+
+
+
+							<!-- tags -->
+							<aside class="wrapper__list__article">
+								<h4 class="border_section">tags</h4>
+								<div class="blog-tags p-0">
+									<ul class="list-inline">
+										{% for tag in categories %}
+										<li class="list-inline-item">
+											<a href="{% url 'base:articles_by_category' tag %}">
+												#{{tag}}
+											</a>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</aside>
+							<!-- end tags -->
+
+							<!-- advertise 
+							<aside class="wrapper__list__article">
+								<h4 class="border_section">Advertise</h4>
+								<a href="">
+									<figure>
+										<img src="" alt="" class="img-fluid">
+									</figure>
+								</a>
+							</aside>-->
+							<!-- end advertise -->
+
+							<!-- newsletter -->
+							{% if not user.is_authenticated %}
+							<aside class="wrapper__list__article">
+								<h4 class="border_section">newsletter</h4>
+								<!-- Form Subscribe -->
+								<div class="widget__form-subscribe bg__card-shadow">
+									<h6>
+										The most important world news and events of the day.
+									</h6>
+									<p><small>Get magzrenvi daily newsletter on your inbox.</small></p>
+									<form method="post" action="{% url 'base:register' %}">
+										{% csrf_token %}
+										<div class="input-group ">
+											<input type="text" name="email" class="form-control" placeholder="Your email address" >
+											<div class="input-group-append">
+												<button class="btn btn-primary" type="submit">sign up</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</aside>
+							{% endif %}
+							<!-- end newsletter -->
+						</div>
+					</div>
+	 <!-- Change the value accordingly -->
+	 <a href="{% url 'base:all_news_default' %}" style="text-align: center;margin: auto;">
+    <button class="button-24" role="button" style='background: #FF4742;
+      border: 1px solid #FF4742;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 16px;
+      min-height: 40px;
+      outline: 0;
+      padding: 12px 14px;
+      text-align: center;
+      text-rendering: geometricprecision;
+      text-transform: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+      
+      '>Display all articles</button></a>
+
+
+
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Popular news category -->
+{% endblock content %}
+	
+

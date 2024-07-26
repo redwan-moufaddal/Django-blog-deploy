@@ -1,0 +1,290 @@
+{% extends "parts/base.html" %}
+{% load static %}
+{% block content %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Breadcrumb -->
+                    <ul class="breadcrumbs bg-light mb-4">
+                        <li class="breadcrumbs__item">
+                            <a class='breadcrumbs__url'>
+                                <i class="fa fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumbs__item">
+                            <a class='breadcrumbs__url' href='{% url "base:articles_by_category" category="news" %}'>News</a>
+                        </li>
+                        <li class="breadcrumbs__item breadcrumbs__item--current">
+                            World
+                        </li>
+                        <button id="flash-span">
+                        <i class="fa fa-th" aria-hidden="true"></i>
+                        </button>
+                        
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <aside class="wrapper__list__article ">
+                        <h4 class="border_section">News world</h4>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                {% for article in first_half %}
+                                <!-- Post Article -->
+                                <div class="article__entry">
+                                    <div class="article__image">
+                                        <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                            <img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div class="article__content">
+                                        <div class="article__category">
+                                            {{article.category}}
+                                        </div>
+                                        <ul class="list-inline">
+
+                                            <li class="list-inline-item">
+                                                <span class="text-dark text-capitalize">
+                                                    {{article.date}}
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                        <h5>
+                                            <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                                {{article.title}}
+                                            </a>
+                                        </h5>
+                                        <p>
+                                            {{ article.sub_description|slice:":132" }}...
+                                        </p>
+                                        <a href="{% url 'base:article_detail' article.title article.aid %}" class="btn btn-outline-primary mb-4 text-capitalize"> read more</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-6">
+                                {% for article in second_half %}
+                                <!-- Post Article -->
+                                <div class="article__entry">
+                                    <div class="article__image">
+                                        <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                            <img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div class="article__content">
+                                        <div class="article__category">
+                                            {{article.category}}
+                                        </div>
+                                        <ul class="list-inline">
+
+                                            <li class="list-inline-item">
+                                                <span class="text-dark text-capitalize">
+                                                    {{article.date}}
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                        <h5>
+                                            <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                                {{article.title}}
+                                            </a>
+                                        </h5>
+                                        <p>
+                                            {{ article.sub_description|slice:":132" }}...
+                                        </p>
+                                        <a href="{% url 'base:article_detail' article.title article.aid %}" class="btn btn-outline-primary mb-4 text-capitalize"> read more</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+
+                    </aside>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="sidebar-sticky">
+                        <aside class="wrapper__list__article ">
+                            <h4 class="border_section">recent post</h4>
+                            <div class="wrapper__list__article-small">
+                                    {% for article in two_articles %}
+                                    <div class="mb-3">
+                                        <!-- Post Article -->
+                                        <div class="card__post card__post-list">
+                                            <div class="image-sm">
+                                                <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                                    <img src="{{article.image_url_video_url}}" class="img-fluid" alt="{{article.title}}">
+                                                </a>
+                                            </div>
+
+
+                                            <div class="card__post__body ">
+                                                <div class="card__post__content">
+
+                                                    <div class="card__post__author-info mb-2">
+                                                        <ul class="list-inline">
+
+                                                            <li class="list-inline-item">
+                                                                <span class="text-dark text-capitalize">
+                                                                    {{article.date}}
+                                                                </span>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="card__post__title">
+                                                        <h6>
+                                                            <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                                                {{article.title}}
+                                                            </a>
+                                                        </h6>
+                                                        <!-- <p class="d-none d-lg-block d-xl-block">
+                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                    sollicitudin ut est. In fringilla dui dui.
+                </p> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                
+
+                                <!-- Post Article -->
+                                    {% for article in one_article %}
+                                    <div class="article__entry">
+                                        <div class="article__image">
+                                            <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                                <img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+                                            </a>
+                                        </div>
+                                        <div class="article__content">
+                                            <div class="article__category">
+                                                {{article.category}}
+                                            </div>
+                                            <ul class="list-inline">
+
+                                                <li class="list-inline-item">
+                                                    <span class="text-dark text-capitalize">
+                                                        {{article.date}}
+                                                    </span>
+                                                </li>
+
+                                            </ul>
+                                            <h5>
+                                                <a href="{% url 'base:article_detail' article.title article.aid %}">
+                                                    {{article.title}}
+                                                </a>
+                                            </h5>
+                                            <p>
+                                                {{ article.sub_description|slice:":132" }}...
+                                            </p>
+                                            <a href="{% url 'base:article_detail' article.title article.aid %}" class="btn btn-outline-primary mb-4 text-capitalize"> read
+                                                more</a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                            </div>
+                        </aside>
+
+                        <!-- tags -->
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">tags</h4>
+                                <div class="blog-tags p-0">
+                                    <ul class="list-inline">
+                                        {% for tag in categories %}
+                                        <li class="list-inline-item">
+                                            <a href="{% url 'base:articles_by_category' tag %}">
+                                                #{{tag}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </aside>
+                            <!-- end tags -->
+                        <!-- newsletter -->
+                            {% if not user.is_authenticated %}
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">newsletter</h4>
+                                <!-- Form Subscribe -->
+                                <div class="widget__form-subscribe bg__card-shadow">
+                                    <h6>
+                                        The most important world news and events of the day.
+                                    </h6>
+                                    <p><small>Get magzrenvi daily newsletter on your inbox.</small></p>
+                                    <form method="post" action="{% url 'base:register' %}">
+                                        {% csrf_token %}
+                                        <div class="input-group ">
+                                            <input type="text" name="email" class="form-control" placeholder="Your email address" >
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit">sign up</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </aside>
+                            {% endif %}
+                            <!-- end newsletter 
+
+                        <aside class="wrapper__list__article">
+                            <h4 class="border_section">Advertise</h4>
+                            <a href="#">
+                                <figure>
+                                    <img src="{% static 'images/banner2.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                            </a>
+                        </aside>-->
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            {% if page_obj <= 14 %}
+            {% else %}
+            <!-- Pagination -->
+    <div class="pagination-area">
+        <div class="pagination wow fadeIn animated" data-wow-duration="2s" data-wow-delay="0.5s"
+            style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
+
+            {% if page_obj.has_previous %}
+                <a href="?page=1&style=style2">«</a>
+                <a href="?page={{ page_obj.previous_page_number }}&style=style2">previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="active" href="?page={{ num }}&style=style2">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}&style=style2">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&style=style2">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&style=style2">»</a>
+            {% endif %}
+
+        </div>
+    </div>
+{% endif %}
+        
+        
+    </section>
+
+
+<script>
+    document.getElementById("flash-span").addEventListener("click", function() {
+        window.location.href = "{% url 'base:all_news_default' %}";
+    });
+    </script>
+{% endblock content %}

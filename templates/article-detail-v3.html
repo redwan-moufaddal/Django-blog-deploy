@@ -1,0 +1,316 @@
+{% extends "parts/base.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+    <section class="bg-light">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <ul class="breadcrumbs mb-4 text-center">
+                <li class="breadcrumbs__item">
+                    <a class='breadcrumbs__url' href='index.html'>
+                        <i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <a class='breadcrumbs__url' href='index.html'>{{article.category}}</a>
+                </li>
+                <li class="breadcrumbs__item breadcrumbs__item--current">
+                    {{article.title}}
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="go__explore-title">
+                        <h1>{{article.title}}</h1>
+                        <p>{{ article.sub_description|slice:":132" }}...</p>
+                    </div>
+
+                    <hr>
+                    <div class="wrap__article-detail-info">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <figure class="image-profile">
+                                    <img src="{% static 'images/profile2.png' %}" alt="">
+                                </figure>
+                            </li>
+<!--                            <li class="list-inline-item">
+
+                                <span>
+                                    by
+                                </span>
+                                <a href="#">
+                                    john doe,
+                                </a>
+                            </li>-->
+                            <li class="list-inline-item">
+                                <span class="text-dark text-capitalize ml-1">
+                                    {{ article.date }}
+                                </span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span class="text-dark text-capitalize">
+                                    in
+                                </span>
+                                <a href="#">
+                                    {{article.category}}
+                                </a>
+
+
+                            </li>
+                             <li class="list-inline-item ">
+                                    <span class="mr-1 ml-1">
+                                        <i class="fa fa-eye"></i>
+                                        {{article.views_count}}
+                                    </span>
+
+                                </li> 
+
+                        </ul>
+                    </div>
+
+                    <figure>
+                        <img src="{{article.image_url_video_url}}" alt="{{article.title}}" class="img-fluid">
+                    </figure>
+                    <div class="wrap__article-detail-content">
+                        <div class="total-views">
+                            <div class="total-views-read">
+                                {{ article.views_count|format_views }}
+                                <span>
+                                    views
+                                </span>
+                            </div>
+
+
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-social-o facebook" href="{{share_links.Facebook}}" target="_blank">
+                                        <i class="fa fa-facebook-f"></i>
+                                        <span>Facebook</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-social-o twitter" href="{{share_links.Twitter}}" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                        <span>Twitter</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-social-o whatsapp" href="{{share_links.WhatsApp}}" target="_blank">
+                                        <i class="fa fa-whatsapp"></i>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-social-o telegram" href="{{share_links.Telegram}}" target="_blank">
+                                        <i class="fa fa-telegram"></i>
+                                        <span>Telegram</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-linkedin-o linkedin" href="{{share_links.LinkedIn}}" target="_blank">
+                                        <i class="fa fa-linkedin"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="has-drop-cap-container ">
+                            {{article.content}}
+
+                        </p>
+
+                        
+                        <div class="clearfix"></div>
+
+
+                        <div class="col-md-10 mx-auto">
+                            <div class="text-center">
+                                <!-- News Tags -->
+                                <div class="blog-tags">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <i class="fa fa-tags">
+                                            </i>
+                                        </li>
+                                        {% for article in keywords %}
+                                        <li class="list-inline-item">
+                                            <span style="display: block;
+                                                margin-bottom: 5px;
+                                                padding: 7px 10px;
+                                                border: 1px solid #ddd;
+                                                margin-right: 2px;
+                                                color: #000;
+                                                text-decoration: none;
+                                                text-transform: uppercase;
+                                                font-size: 11px;
+                                                letter-spacing: 1px;
+                                                font-family: Montserrat, sans-serif;">
+                                                #{{article}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Profile author 
+                            <div class="wrap__profile">
+                                <div class="wrap__profile-author">
+                                    <figure>
+                                        <img src="{% static 'images/profile2.png' %}" alt="">
+                                    </figure>
+                                    <div class="wrap__profile-author-detail">
+                                        <div class="wrap__profile-author-detail-name">author</div>
+                                        <h4>jhon doe</h4>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam
+                                            ad beatae itaque ea non
+                                            placeat officia ipsum praesentium! Ullam?</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="#" class="btn btn-social btn-social-o facebook ">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="btn btn-social btn-social-o twitter ">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="btn btn-social btn-social-o instagram ">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="btn btn-social btn-social-o telegram ">
+                                                    <i class="fa fa-telegram"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="btn btn-social btn-social-o linkedin ">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>-->
+
+
+                            <!-- Comment  -->
+                            <div id="comments" class="comments-area">
+                                <h3 class="comments-title">{{all_comment.count}} Comments:</h3>
+
+                                <div class="comment-respond">
+                                    <h3 class="comment-reply-title">Leave a Reply</h3>
+
+                                    <form class="comment-form" method="post">
+                                        {% csrf_token %}
+                                        
+                                        <p class="comment-form-comment">
+                                            {{ form.comment.label_tag }} {{ form.comment }}
+                                        </p>
+                                        <p class="comment-form-author">
+                                            {{ form.name.label_tag }} {{ form.name }}
+                                        </p>
+                                        <p class="comment-form-email">
+                                            {{ form.email.label_tag }} {{ form.email }}
+                                        </p>
+                                        
+                                        <!--<p class="comment-form-cookies-consent">
+                                            {{ form.wp_comment_cookies_consent }} {{ form.wp_comment_cookies_consents.label_tag }}
+                                        </p>-->
+                                        <p class="form-submit">
+                                            <input type="submit" name="submit" id="submit" class="submit" value="Post Comment">
+                                        </p>
+                                    </form>
+                                    </div>
+
+                                <ol class="comment-list">
+                                    <li class="comment">
+                                        {% for comment in all_comment %}
+                                        <aside class="comment-body">
+                                            <div class="comment-meta">
+                                                <div class="comment-author vcard">
+                                                    <img src="{% static 'images/profile2.png' %}" class="avatar" alt="image">
+                                                    <b class="fn">{{comment.name}}</b>
+                                                    <span class="says">says:</span>
+                                                </div>
+
+                                                <div class="comment-metadata">
+                                                    <a href="#">
+                                                        <span>{{ comment.date_pub|date:"F j, Y \a\t P" }}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="comment-content">
+                                                <p>{{comment.message}}.</p>
+                                            </div>
+
+                                            <!--<div class="reply">
+                                                <a href="#" class="comment-reply-link">Reply</a>
+                                            </div>-->
+                                        </aside>
+                                        {% endfor %}
+<!--                                    
+                                        <ol class="children">
+                                            <li class="comment">
+                                                <aside class="comment-body">
+                                                    <div class="comment-meta">
+                                                        <div class="comment-author vcard">
+                                                            <img src="{% static 'images/profile.png' %}" class="avatar" alt="image">
+                                                            <b class="fn">Sinmun</b>
+                                                            <span class="says">says:</span>
+                                                        </div>
+
+                                                        <div class="comment-metadata">
+                                                            <a href="#">
+                                                                <span>April 24, 2019 at 10:59 am</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="comment-content">
+                                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever
+                                                            since the 1500s, when an
+                                                            unknown printer took a galley of type and scrambled it to
+                                                            make a type specimen book.</p>
+                                                    </div>
+
+                                                    <div class="reply">
+                                                        <a href="#" class="comment-reply-link">Reply</a>
+                                                    </div>
+                                                </aside>
+                                            </li>
+                                        </ol>-->
+                                    </li>
+
+                                </ol>
+                            </div>
+                            <!-- Comment -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single_navigation-prev mb-5">
+                                        <a href="{% url 'base:article_detail' random_article1.title random_article2.aid %}">
+                                            <span>previous post</span>
+                                            {{random_article1.title}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single_navigation-next text-left text-md-right mb-5">
+                                        <a href="{% url 'base:article_detail' random_article2.title random_article2.aid %}">
+                                            <span>next post</span>
+                                            {{random_article2.title}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
