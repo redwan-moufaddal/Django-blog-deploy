@@ -88,7 +88,7 @@ DATABASES = {
 }
 
 database_url  = os.environ.get("DATABASE_URL")
-DATABASES["default"]=dj_database_url.parse("postgres://django_blog_site_2024_user:MVO7tsN46yh0lkGPlsTDpi6v0kt0qxdF@dpg-cpgnrsm3e1ms73ajcd50-a.oregon-postgres.render.com/django_blog_site_2024")
+DATABASES["default"]=dj_database_url.parse(database_url)
 
 
 # Password validation
