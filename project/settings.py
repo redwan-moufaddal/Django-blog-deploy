@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'saas-django-5ug0.onrender.com',
+    'django-blog-deploy.onrender.com',
     # Add any other hosts/domains you want to allow
 ]
 
