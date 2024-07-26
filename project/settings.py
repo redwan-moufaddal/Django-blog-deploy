@@ -30,12 +30,6 @@ ALLOWED_HOSTS = [
     # Add any other hosts/domains you want to allow
 ]
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'saas-django-5ug0.onrender.com',
-    # Add any other hosts/domains you want to allow
-]
 
 
 # Application definition
